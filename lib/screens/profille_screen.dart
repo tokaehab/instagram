@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/widgets/profile_screen_appbar.dart';
 import 'package:instagram/widgets/profile_tabs.dart';
-import '../widgets/highlighted_stories_list.dart';
-import '../widgets/story.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override

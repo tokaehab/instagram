@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/screens/activity_screen.dart';
 import 'package:instagram/screens/profille_screen.dart';
+import 'package:instagram/screens/search_screen.dart';
 import '../screens/main_screen.dart';
 import '../widgets/mini_avatar.dart';
 
@@ -13,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List screens = [
     MainScreen(),
-    MainScreen(),
+    SearchScreen(),
     MainScreen(),
     ActivityScreen(),
     ProfileScreen(),

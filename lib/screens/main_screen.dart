@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../widgets/posts_list.dart';
 import '../widgets/stories_list.dart';
 import 'messages_screen.dart';
@@ -31,23 +30,12 @@ class MainScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height * 0.9,
-        child: Column(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.78,
-              child: ListView(
-                children: [
-                  StoriesList(),
-                  Divider(
-                      color: Colors.grey[500].withOpacity(0.2), height: 0.5),
-                  PostsList(),
-                ],
-              ),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          StoriesList(),
+          Divider(color: Colors.grey[500].withOpacity(0.2), height: 0.5),
+          PostsList(),
+        ],
       ),
     );
   }
