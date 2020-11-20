@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/screens/story_view_screen.dart';
 
 class Story extends StatelessWidget {
   final String name;
@@ -13,6 +14,12 @@ class Story extends StatelessWidget {
           Stack(
             children: [
               GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => StoryViewScreen()));
+                },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.2,
                   height: MediaQuery.of(context).size.height * 0.14,
@@ -58,6 +65,7 @@ class Story extends StatelessWidget {
                   right: 1,
                   bottom: 1,
                   child: GestureDetector(
+                    onTap: () {},
                     child: CircleAvatar(
                       radius: 17,
                       backgroundColor: Theme.of(context).primaryColor,

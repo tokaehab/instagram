@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram/models/explore_item.dart';
 import 'package:instagram/models/image_explore_item.dart';
-import 'package:instagram/models/multible_image_explore_item.dart';
+import 'package:instagram/models/multiple_image_explore_item.dart';
 import 'package:instagram/models/reels_explore_item.dart';
 import 'package:instagram/models/video_explore_item.dart';
 import 'package:instagram/widgets/search_widgets/image_explore_widget.dart';
-import 'package:instagram/widgets/search_widgets/multible_image_explore_widget.dart';
+import 'package:instagram/widgets/search_widgets/multiple_image_explore_widget.dart';
 import 'package:instagram/widgets/search_widgets/reels_explore_widget.dart';
 import 'package:instagram/widgets/search_widgets/video_explore_widget.dart';
 
@@ -33,37 +33,37 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://content.fortune.com/wp-content/uploads/2018/07/gettyimages-961697338.jpg',
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://i.pinimg.com/736x/ab/09/98/ab099805acf57a7a7bc07ddfd6c7059d.jpg',
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://image.freepik.com/free-photo/lovely-romantic-couple-bed_23-2147862644.jpg',
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://thumbs.dreamstime.com/b/young-lovely-couple-bed-having-fun-covered-soft-warm-white-blanket-happy-playful-caucasian-lovers-relaxing-comfortable-139381104.jpg',
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://image.freepik.com/free-photo/front-view-lovely-couple-kissing_23-2148297679.jpg',
       ),
@@ -75,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
     );
     exploreItems.add(
-      MultibleImageExploreItem(
+      MultipleImageExploreItem(
         'muhammed',
         'https://www.channelnewsasia.com/image/12219508/16x9/1440/810/f8becffde4960b34b648ee11763b0c2c/jf/anastasia-sklyar-xr2tms56j7a-unsplash-mod.jpg',
       ),
@@ -158,10 +158,10 @@ class _SearchScreenState extends State<SearchScreen> {
                     return VideoExploreWidget(exploreItems[i]);
                   }
                   break;
-                case MultibleImageExploreItem:
+                case MultipleImageExploreItem:
                   {
-                    //multible images
-                    return MultibleImageExploreWidget(exploreItems[i]);
+                    //multiple images
+                    return multipleImageExploreWidget(exploreItems[i]);
                   }
                   break;
                 default:

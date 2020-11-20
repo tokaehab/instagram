@@ -38,26 +38,28 @@ class FollowRequest extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  height: MediaQuery.of(context).size.height * 0.05,
                   width: MediaQuery.of(context).size.width * 0.15,
                   color: Colors.white,
-                  child: RaisedButton(
-                    onPressed: () {},
-                    padding: EdgeInsets.all(1),
-                    color: Theme.of(context).primaryColor,
-                    child: FittedBox(
-                      child: Text(
-                        'Delete',
-                        style: TextStyle(color: Colors.white),
+                  padding: EdgeInsets.all(0.4),
+                  child: ButtonTheme(
+                    minWidth: MediaQuery.of(context).size.width * 0.15,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      padding: EdgeInsets.all(1),
+                      color: Theme.of(context).primaryColor,
+                      child: FittedBox(
+                        child: Text(
+                          'Delete',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            // RaisedButton(
-            //   onPressed: null,
-            //   child: Text('Decline'),
-            // ),
           ],
         ),
       ),
