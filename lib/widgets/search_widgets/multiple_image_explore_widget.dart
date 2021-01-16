@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/models/multiple_image_explore_item.dart';
 
-class multipleImageExploreWidget extends StatelessWidget {
+class MultipleImageExploreWidget extends StatelessWidget {
   final MultipleImageExploreItem exploreItem;
-  multipleImageExploreWidget(this.exploreItem);
+  MultipleImageExploreWidget(this.exploreItem);
   @override
   Widget build(BuildContext context) {
     return Stack(

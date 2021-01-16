@@ -176,7 +176,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             MaterialPageRoute(
                                 builder: (context) => PostScreen()));
                       },
-                      child: multipleImageExploreWidget(exploreItems[i]));
+                      child: MultipleImageExploreWidget(exploreItems[i]));
 
                 default:
                   return GestureDetector(
