@@ -10,6 +10,8 @@ import 'package:instagram/widgets/search_widgets/multiple_image_explore_widget.d
 import 'package:instagram/widgets/search_widgets/reels_explore_widget.dart';
 import 'package:instagram/widgets/search_widgets/video_explore_widget.dart';
 
+import 'post_screen.dart';
+
 class SearchScreen extends StatefulWidget {
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -29,43 +31,43 @@ class _SearchScreenState extends State<SearchScreen> {
     exploreItems.add(
       ImageExploreItem(
         'Toka',
-        'https://resize.indiatvnews.com/en/resize/newbucket/715_-/2018/02/propose-1517999844.jpg',
+        'https://cf1.s3.souqcdn.com/item/2019/05/01/53/46/10/23/item_L_53461023_64d6fa8a94782.jpg',
       ),
     );
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+        'https://www.pandotrip.com/wp-content/uploads/2016/07/li-Photo-by-Santo-980x572.jpg',
       ),
     );
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://content.fortune.com/wp-content/uploads/2018/07/gettyimages-961697338.jpg',
+        'https://www.yourtrainingedge.com/wp-content/uploads/2019/05/background-calm-clouds-747964.jpg',
       ),
     );
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://i.pinimg.com/736x/ab/09/98/ab099805acf57a7a7bc07ddfd6c7059d.jpg',
+        'https://www.adobe.com/content/dam/cc/us/en/creative-cloud/photography/discover/landscape-photography/CODERED_B1_landscape_hero-img_900x420.jpg.img.jpg',
       ),
     );
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://image.freepik.com/free-photo/lovely-romantic-couple-bed_23-2147862644.jpg',
+        'https://www.tom-archer.com/wp-content/uploads/2018/06/milford-sound-night-fine-art-photography-new-zealand.jpg',
       ),
     );
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://thumbs.dreamstime.com/b/young-lovely-couple-bed-having-fun-covered-soft-warm-white-blanket-happy-playful-caucasian-lovers-relaxing-comfortable-139381104.jpg',
+        'https://images.squarespace-cdn.com/content/v1/561a16a8e4b076f70550437b/1495701737051-2KQ1S4TMFYZJVGEZF43W/ke17ZwdGBToddI8pDm48kL4WrIntsHuCODFzGytxs8sUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcw31z2cKmL83lZVTgYf1Shcnt0pzT4b-h8WwoQ3rX-86z0Q_QpJgDA4jmv5AtYw-J/3.jpg',
       ),
     );
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://image.freepik.com/free-photo/front-view-lovely-couple-kissing_23-2148297679.jpg',
+        'https://www.lukas-petereit.com/wp-content/uploads/2018/08/Sunset-at-Verdon-Canyon-Landscape-of-Provence-Photography-in-France.jpg',
       ),
     );
     exploreItems.add(
@@ -77,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
     exploreItems.add(
       MultipleImageExploreItem(
         'muhammed',
-        'https://www.channelnewsasia.com/image/12219508/16x9/1440/810/f8becffde4960b34b648ee11763b0c2c/jf/anastasia-sklyar-xr2tms56j7a-unsplash-mod.jpg',
+        'https://photographycourse.net/wp-content/uploads/2014/11/Landscape-Photography-steps.jpg',
       ),
     );
   }
@@ -147,29 +149,44 @@ class _SearchScreenState extends State<SearchScreen> {
             itemBuilder: (context, i) {
               switch (exploreItems[i].runtimeType) {
                 case ReelsExploreItem:
-                  {
-                    //reels
-                    return ReelsExploreWidget(exploreItems[i]);
-                  }
-                  break;
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PostScreen()));
+                      },
+                      child: ReelsExploreWidget(exploreItems[i]));
+
                 case VideoExploreItem:
-                  {
-                    //video
-                    return VideoExploreWidget(exploreItems[i]);
-                  }
-                  break;
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PostScreen()));
+                      },
+                      child: VideoExploreWidget(exploreItems[i]));
+
                 case MultipleImageExploreItem:
-                  {
-                    //multiple images
-                    return multipleImageExploreWidget(exploreItems[i]);
-                  }
-                  break;
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PostScreen()));
+                      },
+                      child: multipleImageExploreWidget(exploreItems[i]));
+
                 default:
-                  {
-                    //image
-                    return ImageExploreWidget(exploreItems[i]);
-                  }
-                  break;
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PostScreen()));
+                      },
+                      child: ImageExploreWidget(exploreItems[i]));
               }
             },
           ),

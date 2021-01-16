@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'mini_avatar.dart';
 
 class FollowRequest extends StatelessWidget {
@@ -12,12 +11,15 @@ class FollowRequest extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.3,
-              child: Text(
-                'ZoozyMediaQuery.of(context).size.height * 0.1',
-                style: TextStyle(color: Colors.white),
-                overflow: TextOverflow.ellipsis,
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.3,
+                child: Text(
+                  'ZoozyMediaQuery.of(context).size.height * 0.1',
+                  style: TextStyle(color: Colors.white),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
             Row(

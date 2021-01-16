@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/widgets/follow_request.dart';
+import 'package:instagram/widgets/requests_tab.dart';
 import 'package:instagram/widgets/mention_activity.dart';
 
 class ActivityScreen extends StatelessWidget {
@@ -12,8 +12,8 @@ class ActivityScreen extends StatelessWidget {
         title: Text('Activity'),
       ),
       body: ListView(children: [
+        RequestsTab(),
         MentionAcivity(),
-        FollowRequest(),
         MentionAcivity(),
         MentionAcivity(),
         MentionAcivity(),

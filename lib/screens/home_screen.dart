@@ -43,9 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(
               Icons.search_outlined,
-              color: Colors.white.withOpacity(0.5),
             ),
-            activeIcon: Icon(Icons.search),
+            activeIcon: Icon(
+              Icons.search,
+              size: 30,
+            ),
             label: '',
           ),
           BottomNavigationBarItem(

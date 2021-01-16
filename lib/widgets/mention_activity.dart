@@ -10,7 +10,7 @@ class MentionAcivity extends StatelessWidget {
       child: ListTile(
         leading: MiniAvatar(),
         title: Text(
-          'Zoozy mentioned you in a post',
+          'Someone mentioned you in a post',
           style: TextStyle(color: Colors.white),
         ),
         trailing: Container(

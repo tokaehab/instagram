@@ -9,7 +9,6 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(18, 18, 18, 1),
         elevation: 5,
         centerTitle: true,
         leading: IconButton(
