@@ -1,37 +1,14 @@
-// import 'package:flutter/cupertino.dart';
+import 'package:instagram/models/Users/user.dart';
 
-// class MyAccount extends User {
-//   String email;
-//   List<Chat> chats;
-//   List<Notification> notifications;
-//   MyAccount(
-//     String email,
-//     List<Chat> chats,
-//     List<Notification> notifications,
-//     String username,
-//     List<Account> following,
-//     List<Account> followers,
-//     List<Post> posts,
-//     List<Post> taggedPosts,
-//     List<HighlightStory> highlightStories,
-//     List<Story> story,
-//     String bio,
-//   ) {
-//     super(
-//       email,
-//       chats,
-//       notifications,
-//       username,
-//       following,
-//       followers,
-//       posts,
-//       taggedPosts,
-//       highlightStories,
-//       story,
-//       bio,
-//     );
-//     this.email = email;
-//     this.chats = chats;
-//     this.notifications = notifications;
-//   }
-// }
+class MyAccount extends User {
+  String email;
+  // List<Chat> chats;
+  // List<Notification> notifications;
+  MyAccount.fromUser(String email, String username, bool isPrivate, String bio)
+      : this.email = email,
+        super.fromUser(username, isPrivate, bio);
+
+  MyAccount.fromFirebase(doc)
+      : this.email = doc['email'],
+        super.fromFirebase(doc);
+}

@@ -6,6 +6,7 @@ import '../screens/main_screen.dart';
 import '../widgets/mini_avatar.dart';
 
 class HomeScreen extends StatefulWidget {
+  static final routeName = '/home';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }

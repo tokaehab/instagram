@@ -48,12 +48,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   child: Text(
                     loginMode
                         ? 'Create new account'
-                        : 'I already have one Log in',
+                        : 'You already have one ? log in',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
-                      // fontFamily:
-                      //     Theme.of(context).textTheme.headline6.fontFamily,
                     ),
                   ),
                 )
