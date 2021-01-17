@@ -4,6 +4,7 @@ import '../widgets/stories_list.dart';
 import 'messages_screen.dart';
 
 class MainScreen extends StatelessWidget {
+  static final routeName = '/main';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
