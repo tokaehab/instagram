@@ -4,7 +4,7 @@ import 'package:instagram/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class AuthForm extends StatefulWidget {
-  bool loginMode;
+  final bool loginMode;
   AuthForm(this.loginMode);
   @override
   _AuthFormState createState() => _AuthFormState();
