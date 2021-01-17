@@ -10,7 +10,7 @@ class StoriesList extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          Story('name 1', true),
+          Story('Your Story', true),
           Story('name 2'),
           Story('name 3'),
           Story('name 4'),

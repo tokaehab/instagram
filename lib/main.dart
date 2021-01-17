@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/auth_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
         primaryColorLight: mycolor.shade100,
         textTheme: TextTheme(
           headline6: TextStyle(
-            foreground: Paint()..shader = linearGradient,
+            //foreground: Paint()..shader = linearGradient,
             fontSize: 35,
             fontFamily: 'Galada',
           ),
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
         ),
         backgroundColor: Color(0xFF09080E),
       ),
-      home: AuthenticationScreen(),
+      home: HomeScreen(),
     );
   }
 }
