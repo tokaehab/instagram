@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/providers/user_provider.dart';
 import 'package:instagram/screens/home_screen.dart';
+import 'package:instagram/widgets/measure_size.dart';
 import 'package:provider/provider.dart';
 
 class AuthForm extends StatefulWidget {
-  bool loginMode;
-  AuthForm(this.loginMode);
+  AuthForm();
   @override
   _AuthFormState createState() => _AuthFormState();
 }
@@ -19,10 +19,14 @@ class _AuthFormState extends State<AuthForm> {
   String _password;
   bool isLoading;
   bool _obscure = true;
+  var _fieldSize = 0.0;
+  var _fieldCurrentHeight = 0.0;
+  bool loginMode;
   @override
   void initState() {
     super.initState();
     isLoading = false;
+    loginMode = false;
   }
 
   @override
@@ -83,71 +87,78 @@ class _AuthFormState extends State<AuthForm> {
           key: _formKey,
           child: Column(
             children: [
-              TextFormField(
-                key: ValueKey('email'),
-                style: TextStyle(color: Colors.white, fontSize: 20),
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  errorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.redAccent,
-                    ),
-                  ),
-                  labelText: 'Email',
-                  labelStyle: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                validator: (value) {
-                  setState(() {
-                    _email = value;
-                  });
-                  if (!value.contains('@') ||
-                      !value.contains('.com') ||
-                      value.isEmpty) return 'Invalid Email';
-                  return null;
+              MeasureSize(
+                onChange: (Size size) {
+                  if (mounted)
+                    setState(() {
+                      _fieldSize = size.height + 20;
+                    });
                 },
-                onFieldSubmitted: (val) {
-                  if (widget.loginMode)
-                    FocusScope.of(context).requestFocus(_passwordFocusNode);
-                  else
-                    FocusScope.of(context).requestFocus(_usernameFocusNode);
-                },
-              ),
-              if (!widget.loginMode)
-                AnimatedContainer(
-                  duration: Duration(seconds: 1),
-                  curve: Curves.bounceOut,
-                  child: AnimatedOpacity(
-                    duration: Duration(milliseconds: 400),
-                    opacity: widget.loginMode ? 0 : 1,
-                    child: TextFormField(
-                      key: ValueKey('username'),
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        errorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.redAccent,
-                          ),
-                        ),
-                        labelText: 'Username',
-                        labelStyle:
-                            TextStyle(color: Colors.white, fontSize: 18),
+                child: TextFormField(
+                  key: ValueKey('email'),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.redAccent,
                       ),
-                      focusNode: _usernameFocusNode,
-                      validator: (value) {
-                        setState(() {
-                          _username = value;
-                        });
-                        if (!widget.loginMode && value.length < 4)
-                          return 'Username should be at least 4 characters';
-                        return null;
-                      },
-                      onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(_passwordFocusNode);
-                      },
                     ),
+                    labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  validator: (value) {
+                    setState(() {
+                      _email = value;
+                    });
+                    if (!value.contains('@') ||
+                        !value.contains('.com') ||
+                        value.isEmpty) return 'Invalid Email';
+                    return null;
+                  },
+                  onFieldSubmitted: (val) {
+                    if (loginMode)
+                      FocusScope.of(context).requestFocus(_passwordFocusNode);
+                    else
+                      FocusScope.of(context).requestFocus(_usernameFocusNode);
+                  },
+                ),
+              ),
+              AnimatedContainer(
+                duration: Duration(seconds: 1),
+                curve: Curves.bounceOut,
+                height: _fieldCurrentHeight,
+                child: AnimatedOpacity(
+                  duration: Duration(milliseconds: 400),
+                  opacity: loginMode ? 0 : 1,
+                  child: TextFormField(
+                    key: ValueKey('username'),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      errorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.redAccent,
+                        ),
+                      ),
+                      labelText: 'Username',
+                      labelStyle: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    focusNode: _usernameFocusNode,
+                    validator: (value) {
+                      setState(() {
+                        _username = value;
+                      });
+                      if (!loginMode && value.length < 4)
+                        return 'Username should be at least 4 characters';
+                      return null;
+                    },
+                    onFieldSubmitted: (_) {
+                      FocusScope.of(context).requestFocus(_passwordFocusNode);
+                    },
                   ),
                 ),
+              ),
               TextFormField(
                 key: ValueKey('password'),
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -191,13 +202,13 @@ class _AuthFormState extends State<AuthForm> {
                       child: RaisedButton(
                         onPressed: () {
                           FocusScope.of(context).unfocus();
-                          if (widget.loginMode)
+                          if (loginMode)
                             tryToLogin();
                           else
                             tryToRegister();
                         },
                         child: Text(
-                          widget.loginMode ? 'Log in' : 'Sign up',
+                          loginMode ? 'Log in' : 'Sign up',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -206,6 +217,26 @@ class _AuthFormState extends State<AuthForm> {
                         color: Colors.blue,
                       ),
                     ),
+              FlatButton(
+                onPressed: () {
+                  if (loginMode)
+                    _fieldCurrentHeight = _fieldSize;
+                  else
+                    _fieldCurrentHeight = 0.0;
+                  setState(() {
+                    loginMode = !loginMode;
+                  });
+                },
+                child: Text(
+                  loginMode
+                      ? 'Create new account'
+                      : 'You already have one ? log in',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              )
             ],
           ),
         ),

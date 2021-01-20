@@ -7,11 +7,9 @@ class AuthenticationScreen extends StatefulWidget {
 }
 
 class _AuthenticationScreenState extends State<AuthenticationScreen> {
-  bool loginMode;
   @override
   void initState() {
     super.initState();
-    loginMode = true;
   }
 
   @override
@@ -38,23 +36,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                     ),
                   ),
                 ),
-                AuthForm(loginMode),
-                FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      loginMode = !loginMode;
-                    });
-                  },
-                  child: Text(
-                    loginMode
-                        ? 'Create new account'
-                        : 'You already have one ? log in',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                )
+                AuthForm(),
               ],
             ),
           ),
